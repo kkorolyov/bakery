@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 
 tee -a /etc/dnf/dnf.conf <<EOF
 fastestmirror=true
