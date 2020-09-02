@@ -6,7 +6,7 @@ cpus = 2
 
 dirPieline = "/c/dev/projects/pieline"
 
-webPort = 3000
+webPort = 4000
 gatePort = 5000
 jaegerPort = 16686
 
