@@ -20,8 +20,12 @@ Vagrant.configure("2") do |config|
     "install.sh",
     "rootless.sh",
     "deployment.sh",
+    "env.sh",
   ].each do |file|
-    config.vm.provision "shell", path: "run/#{file}"
+    config.vm.provision "shell", path: "run/#{file}", env: {
+                                   "GITHUB_ACTOR" => ENV["GITHUB_ACTOR"],
+                                   "GITHUB_TOKEN" => ENV["GITHUB_TOKEN"],
+                                 }
   end
 
   config.vm.synced_folder dirPieline, "/pie"
