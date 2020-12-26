@@ -11,7 +11,7 @@ dnf install -y podman buildah slirp4netns fuse-overlayfs
 
 # pieline environment
 curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
-curl -sL https://rpm.nodesource.com/setup_15.x | bash -
+curl -sL https://rpm.nodesource.com/setup_14.x | bash -
 dnf install -y python-pip java-latest-openjdk yarn
 
 dnf autoremove -y
