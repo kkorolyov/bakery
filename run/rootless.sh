@@ -4,6 +4,7 @@
 sysctl user.max_user_namespaces=15000
 usermod --add-subuids 100000-101000 --add-subgids 100000-101000 vagrant
 
+mkdir -p /etc/containers/
 tee -a /etc/containers/containers.conf <<EOF
 runtime = "crun"
 EOF

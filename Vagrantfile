@@ -16,10 +16,10 @@ Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
 
   [
+    "deployment.sh",
     "dnf.sh",
     "install.sh",
     "rootless.sh",
-    "deployment.sh",
     "env.sh",
   ].each do |file|
     config.vm.provision "shell", path: "run/#{file}", env: {
