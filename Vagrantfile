@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 memory = 4096
-cpus = 2
+cpus = 4
 
 dirPieline = "/c/dev/projects/pieline"
 
