@@ -11,9 +11,9 @@ EOF
 # local registry mirror
 tee -a /etc/rancher/k3s/registries.yaml <<EOF
 mirrors:
-	docker.io:
+	dreg.local:
 		endpoint:
-			- http://localhost:5000
+			- http://dreg.local
 EOF
 
 # export generated kubeconfig
