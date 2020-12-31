@@ -4,11 +4,13 @@
 sysctl user.max_user_namespaces=15000
 usermod --add-subuids 100000-101000 --add-subgids 100000-101000 vagrant
 
+# Prefer crun
 mkdir -p /etc/containers/
 tee -a /etc/containers/containers.conf <<EOF
 runtime = "crun"
 EOF
 
+# Support rootless limit delegation
 mkdir -p /etc/systemd/system/user@.service.d/
 tee -a /etc/systemd/system/user@.service.d/delegate.conf <<EOF
 [Service]
