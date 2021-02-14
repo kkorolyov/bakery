@@ -1,6 +1,7 @@
 #!/usr/bin/sh
 
 # bleeding edge always
+dnf config-manager --set-enable updates-testing
 dnf upgrade -y
 
 # QOLs
