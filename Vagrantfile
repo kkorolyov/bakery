@@ -20,16 +20,17 @@ Vagrant.configure("2") do |config|
     "dnf.sh",
     "install.sh",
     "podman.sh",
-    "k3s.sh",
-    "env.sh",
   ].each do |file|
-    config.vm.provision "shell", path: "run/#{file}", env: {
-                                   "GITHUB_ACTOR" => ENV["GITHUB_ACTOR"],
-                                   "GITHUB_TOKEN" => ENV["GITHUB_TOKEN"],
-                                 }
+    config.vm.provision "shell", path: "run/#{file}"
   end
+  config.vm.provision "shell", path: "run/env.sh", env: {
+                                 "GITHUB_ACTOR" => ENV["GITHUB_ACTOR"],
+                                 "GITHUB_TOKEN" => ENV["GITHUB_TOKEN"],
+                               }
   # TODO Remove once k3s supports cgroups v2
   config.vm.provision "shell", inline: "grubby --args='systemd.unified_cgroup_hierarchy=0' --update-kernel=ALL", reboot: true
+  config.vm.provision "shell", inline: "curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE='644' sh -s -", privileged: false
+  config.vm.provision "shell", path: "run/k3s.sh"
 
   config.vm.synced_folder dirPieline, "/pie"
 
