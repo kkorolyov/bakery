@@ -12,7 +12,7 @@ httpsPort = 443
 kubectlPort = 6443
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "fedora/32-cloud-base"
+  config.vm.box = "fedora/33-cloud-base"
 
   config.ssh.insert_key = false
 
