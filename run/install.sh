@@ -5,7 +5,7 @@ dnf config-manager --set-enable updates-testing
 dnf upgrade -y
 
 # QOLs
-dnf install -y vim
+dnf install -y vim make
 
 # OCI stuff
 dnf install -y podman buildah slirp4netns fuse-overlayfs
