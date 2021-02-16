@@ -9,4 +9,4 @@ mirrors:
 EOF
 
 # export generated kubeconfig
-cp /etc/rancher/k3s/k3s.yaml /vagrant
+cp /etc/rancher/k3s/k3s.yaml /kubefig/bakery.yaml
