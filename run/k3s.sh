@@ -7,6 +7,3 @@ mirrors:
 		endpoint:
 			- http://dreg.local
 EOF
-
-# export generated kubeconfig
-cp /etc/rancher/k3s/k3s.yaml /kubefig/bakery.yaml

@@ -4,11 +4,10 @@
 memory = 4096
 cpus = 4
 
-dirKubefigs = "~/.kube/configs"
 dirPieline = "/c/dev/projects/pieline"
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "fedora/33-cloud-base"
+  config.vm.box = "fedora/32-cloud-base"
 
   config.ssh.insert_key = false
 
@@ -27,7 +26,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: "curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE='644' sh -s -", privileged: false
   config.vm.provision "shell", path: "run/k3s.sh"
 
-  config.vm.synced_folder dirKubefigs, "/kubefig"
   config.vm.synced_folder dirPieline, "/pie"
 
   config.vm.hostname = "bakery.local"
