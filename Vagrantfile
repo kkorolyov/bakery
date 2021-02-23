@@ -6,8 +6,12 @@ cpus = 4
 
 dirPieline = "/c/dev/projects/pieline"
 
+httpPort = 80
+httpsPort = 443
+kubectlPort = 6443
+
 Vagrant.configure("2") do |config|
-  config.vm.box = "fedora/32-cloud-base"
+  config.vm.box = "fedora/33-cloud-base"
 
   config.ssh.insert_key = false
 
@@ -29,11 +33,12 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder dirPieline, "/pie"
 
   config.vm.hostname = "bakery.local"
-  config.vm.network "public_network"
+  config.vm.network "forwarded_port", guest: httpPort, host: httpPort # k3s ingress http
+  config.vm.network "forwarded_port", guest: httpsPort, host: httpsPort # k3s ingress https
+  config.vm.network "forwarded_port", guest: kubectlPort, host: kubectlPort # kubectl
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = memory
     vb.cpus = cpus
-    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 end
