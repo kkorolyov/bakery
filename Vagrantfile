@@ -7,6 +7,7 @@ memory = 4096
 cpus = 4
 
 dir_pieline = "/c/dev/projects/pieline"
+dir_kubefig = "~/.kube/configs"
 
 http_port = 80
 https_port = 443
@@ -33,6 +34,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "run/k3s.sh"
 
   config.vm.synced_folder dir_pieline, "/pie"
+  config.vm.synced_folder dir_kubefig, "/kubefig"
 
   config.vm.hostname = "bakery.local"
   config.vm.network "forwarded_port", guest: http_port, host: http_port # k3s ingress http
